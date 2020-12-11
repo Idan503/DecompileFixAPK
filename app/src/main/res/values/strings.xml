@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DecompileFixAPK</string>
+    <string name="url">https://pastebin.com/raw/T67TVJG9</string>
+    <!-- Changed link from zero-width characters to plain text-->
 </resources>
