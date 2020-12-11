@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -46,12 +47,19 @@ public class Activity_Menu extends AppCompatActivity {
 
     /* access modifiers changed from: private */
     public void makeServerCall() {
+        String id = menu_EDT_id.getText().toString();
+        if(id.length()!=9) {
+            Toast.makeText(this, "Please insert 9 digit id", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+
         new Thread() {
             public void run() {
                 String data = Activity_Menu.getJSON(Activity_Menu.this.getString(R.string.url));
                 if (data != null) {
                     Activity_Menu activity_Menu = Activity_Menu.this;
-                    activity_Menu.startGame(activity_Menu.menu_EDT_id.getText().toString(), data);
+                    activity_Menu.startGame(id, data);
                 }
             }
         }.start();
